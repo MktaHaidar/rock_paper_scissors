@@ -1,48 +1,65 @@
+let choice = ['Rock', 'Paper', 'Scissors']
+
 function getComputerChoice() {
-    let choice = ['Rock', 'Paper', 'Scissors']
+    //let choice = ['Rock', 'Paper', 'Scissors']
     let randomChoice = choice[Math.floor(Math.random() * choice.length)]
     return randomChoice
 }
 
+let score = 0
+
+let scoreUpdate
+
 console.log(getComputerChoice())
 
-function round(playerSelection, computerSelection) {
+
+
+function roundOfGame(playerSelection, computerSelection) {
+
     
-    let win = true
-    if (playerSelection.toLowerCase() == 'RoCk'.toLowerCase() && computerSelection == 'Scissors') {
-        win === true
-        console.log("You win! Rock beats scissors")
-    } else if (playerSelection.toLowerCase() == 'PapEr'.toLowerCase() && computerSelection == 'Rock') {
-        win === true
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
-    } else if (playerSelection.toLowerCase() == 'Scissors'.toLowerCase() && computerSelection == 'Paper') {
-        win === true
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
-    } else if (playerSelection.toLowerCase() == 'Scissors'.toLowerCase() && computerSelection == 'Scissors') {
-       win === false
-        console.log('Draw!')
-    } else if (playerSelection.toLowerCase() == 'PapEr'.toLowerCase() && computerSelection == 'Paper') {
-        win === false
-        console.log('Draw!')
-    } else if (playerSelection.toLowerCase() == 'RocK'.toLowerCase() && computerSelection == 'Rock') {
-        win === false
-        console.log('Draw!')
+    if (playerSelection.toLowerCase() == 'Rock'.toLowerCase() && computerSelection == choice[2]) {
+        console.log("You win! Rock beats scissors. " + 'Your score is ' + score )
+    } else if (playerSelection.toLowerCase() == 'PapEr'.toLowerCase() && computerSelection == choice[0]) {
+        let scoreUpdate = score++
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}` + ' Your score is ' + score)
+    } else if (playerSelection.toLowerCase() == 'Scissors'.toLowerCase() && computerSelection == choice[1]) {
+        let scoreUpdate = score++
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}` + ' Your score is ' + score)
+    } else if (playerSelection.toLowerCase() == 'Scissors'.toLowerCase() && computerSelection == choice[2]) {
+        let scoreUpdate = score
+        console.log('Draw! ' + 'Your score is ' + score)
+    } else if (playerSelection.toLowerCase() == 'PapEr'.toLowerCase() && computerSelection == choice[1]) {
+        let scoreUpdate = score
+        console.log('Draw! ' + 'Your score is ' + score)
+    } else if (playerSelection.toLowerCase() == 'RocK'.toLowerCase() && computerSelection == choice[0]) {
+        let scoreUpdate = score
+        console.log('Draw! ' + 'Your score is ' + score)
     } else {
-        win === false
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
+        let scoreUpdate = score--
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}.` + ' Your score is ' + score)
     }
+
+    console.log(scoreUpdate)
 }
 
-const playerSelection = "ROCK";
+const playerSelection = "SciSsoRs".toLowerCase();
 const computerSelection = getComputerChoice();
 //console.log(round(playerSelection, computerSelection))
+//const gameRound = round()
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        round(playerSelection, getComputerChoice());
-    }
+        roundOfGame(playerSelection, getComputerChoice());
 
-    if (round)
+    }
+        if (score > 2) {
+            console.log("You are a winner!")
+        } else {
+            console.log('You lost!')
+        }
+
+
+
 }
 
 console.log(game())
